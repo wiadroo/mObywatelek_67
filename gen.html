@@ -823,15 +823,6 @@
             }
 
             // 2. Przesyłanie zdjęcia (jeśli nie ma linku)
-            if (imageURLInput.value === '') {
-                const imageUrl = await uploadToCloudinary(fileInput.files[0]);
-                
-                if (!imageUrl) {
-                    return; 
-                }
-                
-                imageURLInput.value = imageUrl; 
-            }
             
             // 3. Generowanie URL (mapowanie nazw na te, które używa card.js)
             const nameMap = {
