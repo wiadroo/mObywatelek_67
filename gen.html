@@ -822,12 +822,6 @@
                 return;
             }
 
-            if (!fileInput.files || fileInput.files.length === 0) {
-                statusMessage.style.color = 'var(--error-red)';
-                statusMessage.textContent = 'Wybierz plik zdjęcia, aby kontynuować!';
-                return;
-            }
-
             // 2. Przesyłanie zdjęcia (jeśli nie ma linku)
             if (imageURLInput.value === '') {
                 const imageUrl = await uploadToCloudinary(fileInput.files[0]);
@@ -872,10 +866,10 @@
                     }
                 }
 
-                // image hidden input: use uploaded Cloudinary url
-                if (rawKey === 'image' && imageURLInput.value) {
-                    value = imageURLInput.value;
-                }
+                // image hidden input: ZAWSZE używaj zdjęcia z folderu assets projektu
+if (rawKey === 'image') {
+    value = "assets/images/IMG_3070.jpeg";
+}
 
                 // map keys like family_name -> familyName etc.
                 const finalKey = nameMap[rawKey] || rawKey;
